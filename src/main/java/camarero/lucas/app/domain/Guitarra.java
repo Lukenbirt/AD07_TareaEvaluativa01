@@ -1,5 +1,9 @@
 package camarero.lucas.app.domain;
 
+import java.io.Serializable;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -20,7 +24,8 @@ import lombok.Setter;
 @AllArgsConstructor
 // anotaciones hybernate
 @Entity
-public class Guitarra{
+//@Table(name="guitarra")
+public class Guitarra implements Serializable{
 
 	// atributos
 	@Id
@@ -37,6 +42,7 @@ public class Guitarra{
 	@Column
 	private int trastes;
 	
+	@JsonBackReference
 	@ManyToOne
 	@JoinColumn (name = "marca_id")
 	private Marca marca;

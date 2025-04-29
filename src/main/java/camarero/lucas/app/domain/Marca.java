@@ -3,6 +3,8 @@ package camarero.lucas.app.domain;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -37,6 +39,7 @@ public class Marca {
 	@Column
 	private String pais;
 	
+	@JsonManagedReference
 	@OneToMany (mappedBy = "marca",cascade = CascadeType.ALL)
 	//@JoinColumn (name = "marca_id")
 	List <Guitarra> guitarras = new ArrayList<>();
